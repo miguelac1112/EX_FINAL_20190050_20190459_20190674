@@ -47,14 +47,15 @@ public class CarteleraDao extends BaseDao {
     }
 
     public ArrayList<Pelicula> listaPelicula(){
-        String sql="select nombre from pelicula";
+        String sql="select * from pelicula";
         ArrayList<Pelicula> peliculas= new ArrayList<>();
         try(Connection conn= this.getConnection();
             Statement stmt= conn.createStatement();
             ResultSet rs= stmt.executeQuery(sql);){
             while(rs.next()){
                 Pelicula pelicula = new Pelicula();
-                pelicula.setNombre(rs.getString(1));
+                pelicula.setIdPelicula(rs.getInt(1));
+                pelicula.setNombre(rs.getString(2));
                 peliculas.add(pelicula);
             }
         } catch (SQLException e) {
@@ -64,14 +65,15 @@ public class CarteleraDao extends BaseDao {
     }
 
     public ArrayList<Cine> listaCines(){
-        String sql="select nombre from cine";
+        String sql="select * from cine";
         ArrayList<Cine> cines= new ArrayList<>();
         try(Connection conn= this.getConnection();
             Statement stmt= conn.createStatement();
             ResultSet rs= stmt.executeQuery(sql);){
             while(rs.next()){
                 Cine cine = new Cine();
-                cine.setNombre(rs.getString(1));
+                cine.setIdCine(rs.getInt(1));
+                cine.setNombre(rs.getString(2));
                 cines.add(cine);
             }
         } catch (SQLException e) {
