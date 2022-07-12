@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="sinjefe" scope="request" type="java.lang.Integer"/>
-
+<jsp:useBean id="tresd" scope="request" type="java.lang.Integer"/>
+<jsp:useBean id="salario" scope="request" type="java.lang.Integer"/>
+<jsp:useBean id="cines" scope="request" type="java.lang.String"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -61,10 +63,13 @@
                                 <a href="<%=request.getContextPath()%>/SinJefesServlet"><%=sinjefe%></a>
                             </td>
                             <td>
+                                <%=tresd%>
                             </td>
                             <td>
+                                <%=salario%>
                             </td>
                             <td>
+                                <%=cines%>
                             </td>
                         </tr>
                     </tbody>

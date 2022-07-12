@@ -14,10 +14,11 @@ public class AdminServlet extends HttpServlet {
         ReporteDao reporteDao = new ReporteDao();
         RequestDispatcher view;
                 request.setAttribute("sinjefe", reporteDao.obtenernumeroSinjefe());
+                request.setAttribute("tresd",reporteDao.obtenernumero3d());
+                request.setAttribute("salario",reporteDao.obtenerempleadosSalario());
+                request.setAttribute("cines",reporteDao.obtenerCadena());
                 view = request.getRequestDispatcher("Reportes.jsp");
                 view.forward(request,response);
-
-
 
 
 
