@@ -100,11 +100,34 @@ public class CarteleraDao extends BaseDao {
     }
 
 
+    public void actualizarCartelera(int idpelicula, int idcine, int tresD,int doblada, int subtitulada, String horario) {
 
+        String sql = "update cartelera set idPelicula = ?, idCine= ?, 3d= ?, doblada=?, subtitulada= ?, horario= ? where idCartelera= ?;";
 
+        try (Connection connection = this.getConnection();
+             PreparedStatement pstmt= connection.prepareStatement(sql)){
+            pstmt.setInt(1,idpelicula);
+            pstmt.setInt(2,idcine);
+            pstmt.setInt(3,tresD);
+            pstmt.setInt(4,doblada);
+            pstmt.setInt(5,subtitulada);
+            pstmt.setString(6,horario);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-
-
+    public void eliminarCartelera(int idCartelera){
+        String sql="delete from cartelera where idCartelera=?;";
+        try(Connection conn=this.getConnection();
+            PreparedStatement ptmt= conn.prepareStatement(sql);){
+            ptmt.setInt(1, idCartelera);
+            ptmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
