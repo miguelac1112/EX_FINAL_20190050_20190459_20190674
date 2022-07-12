@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmpleadoDao extends com.example.demo1.Daos.BaseDao {
+public class EmpleadoDao extends BaseDao {
     public Empleado buscarEmpleado (String dni) {
         Empleado empleado = null;
         String sql = "select * from empleado where dni=?";
