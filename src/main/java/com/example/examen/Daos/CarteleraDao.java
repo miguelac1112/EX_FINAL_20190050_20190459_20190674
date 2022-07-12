@@ -46,6 +46,36 @@ public class CarteleraDao extends BaseDao {
 
     }
 
+    public ArrayList<Cartelera> listarGestor() {
+
+        ArrayList<Cartelera> carteleras = new ArrayList<>();
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT car.idCartelera,pel.*,cin.*,car.3d,car.doblada,car.subtitulada,car.horario FROM empleado em inner join cine cin on em.idcine = cin.idcine \n" +
+                     "INNER JOIN cartelera car ON car.idcine = cin.idcine INNER JOIN pelicula pel ON pel.idpelicula = car.idpelicula;");){
+            while (rs.next()){
+                Cartelera cartelera = new Cartelera();
+                Pelicula pelicula =  new Pelicula();
+                Cine cine = new Cine();
+                cartelera.setIdCartelera(rs.getInt(1));
+                pelicula.setIdPelicula(rs.getInt(2));
+                pelicula.setNombre(rs.getString(3));
+                cine.setIdCine(rs.getInt(4));
+                cine.setNombre(rs.getString(5));
+                cartelera.setPelicula(pelicula);
+                cartelera.setCine(cine);
+                cartelera.setTresD(rs.getInt(7));
+                cartelera.setDoblada(rs.getInt(8));
+                cartelera.setSubtitulada(rs.getInt(9));
+                cartelera.setHorario(rs.getString(10));
+                carteleras.add(cartelera);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return carteleras;
+    }
+
     public ArrayList<Pelicula> listaPelicula(){
         String sql="select * from pelicula";
         ArrayList<Pelicula> peliculas= new ArrayList<>();
