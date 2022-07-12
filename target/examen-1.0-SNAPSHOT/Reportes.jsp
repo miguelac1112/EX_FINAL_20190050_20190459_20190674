@@ -58,7 +58,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <%=sinjefe%>
+                                <a href="<%=request.getContextPath()%>/SinJefesServlet"><%=sinjefe%></a>
                             </td>
                             <td>
                             </td>

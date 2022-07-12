@@ -42,7 +42,7 @@
                 </br>
                 <div class="d-flex my-3">
                     <h2 class="section-heading text-uppercase">Reporte de cantidad</h2>
-                    <a href="" class="btn btn-primary btn-xl ms-auto">Ver Cartelera</a>
+                    <a href="<%=request.getContextPath()%>/GestorServlet" class="btn btn-primary btn-xl ms-auto">Ver Cartelera</a>
                 </div>
                 </br>
                 </br>
@@ -58,7 +58,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <%=sinjefe%>
+                                <a href="<%=request.getContextPath()%>/SinJefesServlet"><%=sinjefe%></a>
                             </td>
                             <td>
                             </td>

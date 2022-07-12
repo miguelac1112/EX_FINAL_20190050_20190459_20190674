@@ -1,4 +1,7 @@
+<%@ page import="com.example.examen.Beans.Empleado" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%ArrayList<Empleado> listaSinJefe = (ArrayList<Empleado>) request.getAttribute("listaSinJefe");%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,7 +43,7 @@
                 </br>
                 <div class="d-flex my-3">
                     <h2 class="section-heading text-uppercase">Empleados sin Jefe</h2>
-                    <a href="" class="btn btn-secondary btn-xl ms-auto">Regresar</a>
+                    <a href="<%=request.getContextPath()%>/AdminServlet" class="btn btn-secondary btn-xl ms-auto">Regresar</a>
                 </div>
                 </br>
                 </br>
@@ -52,24 +55,30 @@
                             <th>DNI</th>
                             <th>Salario</th>
                             <th>Fecha de Contrato</th>
-                            <th>Usuario</th>
+
                         </tr>
                     </thead>
                     <tbody>
+                        <%for(Empleado empleado:listaSinJefe){%>
                         <tr>
                             <td>
+                                <%=empleado.getNombre()%>
                             </td>
                             <td>
+                                <%=empleado.getApellido()%>
                             </td>
                             <td>
+                                <%=empleado.getDni()%>
                             </td>
                             <td>
+                                <%=empleado.getSalario()%>
                             </td>
                             <td>
+                                <%=empleado.getFechaContrato()%>
                             </td>
-                            <td>
-                            </td>
+
                         </tr>
+                        <%}%>
                     </tbody>
                 </table>
             </div>

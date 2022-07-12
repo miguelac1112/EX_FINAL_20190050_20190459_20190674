@@ -11,17 +11,13 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
         ReporteDao reporteDao = new ReporteDao();
-        HttpSession session= request.getSession();
         RequestDispatcher view;
-        switch (action){
-            case "listar":
-                session.setAttribute("sinjefe", reporteDao.obtenernumeroSinjefe());
+                request.setAttribute("sinjefe", reporteDao.obtenernumeroSinjefe());
                 view = request.getRequestDispatcher("Reportes.jsp");
                 view.forward(request,response);
-                break;
-        }
+
+
 
 
 
