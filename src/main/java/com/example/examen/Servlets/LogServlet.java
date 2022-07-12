@@ -8,7 +8,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "LogServlet", value = "/LogServlet")
+
+@WebServlet(name = "LogServlet",urlPatterns = {"/LogServlet",""})
 public class LogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +24,7 @@ public class LogServlet extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/MenuSinLoginServlet");
+                response.sendRedirect(request.getContextPath() + "/LogServlet");
 
             }else{
 
@@ -40,7 +41,7 @@ public class LogServlet extends HttpServlet {
 
         String dni = request.getParameter("dni");
         Empleado empleado = empleadoDao.buscarEmpleado(dni);
-        int contrUsuario = Integer.parseInt(request.getParameter("contrasenha"));
+        int contrUsuario = Integer.parseInt(request.getParameter("pass"));
         int contr = empleadoDao.obtenerpasword(dni);
         HttpSession session = request.getSession();
 
@@ -50,11 +51,11 @@ public class LogServlet extends HttpServlet {
             session.setAttribute("usuarioSesion",empleado);
             session.setAttribute("rol",empleadoDao.obtenerRol(dni));
             if(empleadoDao.obtenerRol(dni).equals("vendedor")){
-                response.sendRedirect(request.getContextPath()+"/MenuServlet");
+                response.sendRedirect(request.getContextPath()+"/VendedorServlet");
             }else if(empleadoDao.obtenerRol(dni).equals("gestor")){
-                response.sendRedirect(request.getContextPath()+"/OperadorIndexServlet");
+                response.sendRedirect(request.getContextPath()+"/GestorServlet");
             }else{
-                response.sendRedirect(request.getContextPath()+"/AdminIndexServlet");
+                response.sendRedirect(request.getContextPath()+"/AdminServlet");
             }
         }else{
 

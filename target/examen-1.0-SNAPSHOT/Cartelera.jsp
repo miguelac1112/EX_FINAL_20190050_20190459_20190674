@@ -1,10 +1,4 @@
-<%@ page import="com.example.examen.Beans.Cartelera" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    ArrayList<Cartelera> listaCarteleras =  (ArrayList<Cartelera>) request.getAttribute("listaCarteleras");
-
-%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,29 +18,13 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
-            <div class="container">
-                <div class="collapse navbar-collapse " id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                            <ul class="navbar-nav">
-                                <li class="">
-                                    <a >
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </div>
-
-            </div>
-        </nav>
         <!-- Navegacion-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 </br>
                 <div class="d-flex my-3">
                     <h2 class="section-heading text-uppercase">Lista de Funciones</h2>
+                    <a href="" class="btn btn-primary btn-xl ms-auto">Crear Funciones</a>
                 </div>
                 </br>
                 <table class="table">
@@ -55,22 +33,21 @@
                             <th>Cadena</th>
                             <th>Cine</th>
                             <th>Película</th>
-                            <th>Horario</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%for(Cartelera cartelera:listaCarteleras){%>
                         <tr>
                             <td>
-                                <%=cartelera.getIdCartelera()%>
-                            </td>
-                            <td>
-                                <%=cartelera%>
                             </td>
                             <td>
                             </td>
+                            <td>
+                            </td>
+                            <td><a href=""><button
+                                    type="button" class="btn btn-success" style="background-color:#002265; border-color:#002265; color:white">Editar</button> </a></td>
+                            <td><a href=""><button
+                                    type="button" class="btn btn-danger" >X</button> </a></td>
                         </tr>
-                        <%}%>
                     </tbody>
                 </table>
             </div>
