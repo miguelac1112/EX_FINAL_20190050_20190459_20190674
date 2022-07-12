@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="sinjefe" scope="request" type="java.lang.Integer"/>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

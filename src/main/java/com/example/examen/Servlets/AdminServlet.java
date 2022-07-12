@@ -17,7 +17,7 @@ public class AdminServlet extends HttpServlet {
         RequestDispatcher view;
         switch (action){
             case "listar":
-                session.setAttribute("sinjefe", reporteDao.listasinjefe());
+                session.setAttribute("sinjefe", reporteDao.obtenernumeroSinjefe());
                 view = request.getRequestDispatcher("Reportes.jsp");
                 view.forward(request,response);
                 break;
