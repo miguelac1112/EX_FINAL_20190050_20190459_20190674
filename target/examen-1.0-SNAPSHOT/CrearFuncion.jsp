@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.example.examen.Beans.Cine" %>
+<%@ page import="com.example.examen.Beans.Pelicula" %>
+<%@ page import="java.util.Objects" %>
+<jsp:useBean type="java.util.ArrayList<com.example.examen.Beans.Cine>" scope="request" id="listaCines"/>
+<jsp:useBean type="java.util.ArrayList<com.example.examen.Beans.Pelicula>" scope="request" id="listaPeliculas"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,31 +46,35 @@
                 </br>
                 <h2 class="section-heading text-uppercase">Crear Función</h2>
 
-                <form class="row g-3 needs-validation" method="POST" action="<%=request.getContextPath()%>/CrearHorario?a=guardar">
+                <form class="row g-3 needs-validation" method="POST" action="<%=request.getContextPath()%>/CrearFuncionServlet?a=guardar">
                     <!--Columna 1-->
                     <div class="col-md-6">
                         <div class="form-group">
                             <!-- Name input-->
                             <label for="funcion" class="form-label">Nombre de la Película *</label>
                             <select class="form-select" name="funcion" id="funcion" required>
-                                <option value=""></option>
+                                <option disabled>Seleccione película</option>
+                                <% for(Pelicula listaPeliculas1 : listaPeliculas){ %>
+                                <option value="<%=listaPeliculas1.getIdPelicula()%>"><%=listaPeliculas1.getNombre()%></option>
+                                <% } %>
                             </select>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label for="sede" class="form-label">Cine *</label>
-                            <select class="form-select" name="sede" id="sede" required>
+                            <label for="cine" class="form-label">Cine *</label>
+                            <select class="form-select" name="cine" id="cine" required>
                                 <option disabled>Seleccione cine</option>
-                                <option value=""></option>
-                                <%%>
+                                <% for(Cine listaCine : listaCines){ %>
+                                <option value="<%=listaCine.getIdCine()%>"><%=listaCine.getNombre()%></option>
+                                <% } %>
                             </select>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label for="sala" class="form-label">Cine *</label>
-                            <select class="form-select" name="sala" id="sala" required>
-                                <option value="0">Sí</option>
-                                <option value="1">No</option>
+                            <label for="tresd" class="form-label">3D *</label>
+                            <select class="form-select" name="tresd" id="tresd" required>
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
                             </select>
                         </div>
                         </br>

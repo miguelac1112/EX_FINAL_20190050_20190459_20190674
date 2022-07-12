@@ -3,7 +3,6 @@ package com.example.examen.Servlets;
 import com.example.examen.Beans.Cartelera;
 import com.example.examen.Beans.Empleado;
 import com.example.examen.Daos.CarteleraDao;
-import com.mysql.cj.Session;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
