@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "FilterGestor")
+@WebFilter(filterName = "FilterGestor",servletNames = {"GestorServlet"})
 public class FilterGestor implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }
