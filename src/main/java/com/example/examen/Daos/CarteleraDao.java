@@ -13,7 +13,7 @@ public class CarteleraDao extends BaseDao {
     public ArrayList<Cartelera> listar(String dni){
         ArrayList<Cartelera> carteleras = new ArrayList<>();
         String sql= "SELECT car.idCartelera,pel.*,cin.*,car.3d,car.doblada,car.subtitulada,car.horario FROM empleado em inner join cine cin on em.idcine = cin.idcine \n" +
-                "INNER JOIN cartelera car ON car.idcine = cin.idcine INNER JOIN pelicula pel ON pel.idpelicula = car.idpelicula where em.dni= ?";
+                "INNER JOIN cartelera car ON car.idcine = cin.idcine INNER JOIN pelicula pel ON pel.idpelicula = car.idpelicula where dni=?";
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql);) {
 
