@@ -39,30 +39,31 @@
             <div class="container">
                 </br>
                 <div class="d-flex my-3">
-                    <h2 class="section-heading text-uppercase">Lista de Funciones</h2>
-                    <a href="" class="btn btn-primary btn-xl ms-auto">Crear Funciones</a>
+                    <h2 class="section-heading text-uppercase">Reporte de cantidad</h2>
+                    <a href="" class="btn btn-primary btn-xl ms-auto">Ver Cartelera</a>
                 </div>
+                </br>
                 </br>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Cadena</th>
-                            <th>Cine</th>
-                            <th>Película</th>
+                            <th>Empleados sin jefe</th>
+                            <th>Películas en 3D</th>
+                            <th>Cines donde empleados tengan un salario mayor a 9700</th>
+                            <th>Cines con la mayor cantidad de películas en cartelera</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
+                                <a href=""></a>
                             </td>
                             <td>
                             </td>
                             <td>
                             </td>
-                            <td><a href=""><button
-                                    type="button" class="btn btn-success" style="background-color:#002265; border-color:#002265; color:white">Editar</button> </a></td>
-                            <td><a href=""><button
-                                    type="button" class="btn btn-danger" >X</button> </a></td>
+                            <td>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cartelera</title>
+        <title>Empleados sin Jefe</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -39,16 +39,20 @@
             <div class="container">
                 </br>
                 <div class="d-flex my-3">
-                    <h2 class="section-heading text-uppercase">Lista de Funciones</h2>
-                    <a href="" class="btn btn-primary btn-xl ms-auto">Crear Funciones</a>
+                    <h2 class="section-heading text-uppercase">Empleados sin Jefe</h2>
+                    <a href="" class="btn btn-secondary btn-xl ms-auto">Regresar</a>
                 </div>
+                </br>
                 </br>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Cadena</th>
-                            <th>Cine</th>
-                            <th>Película</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>DNI</th>
+                            <th>Salario</th>
+                            <th>Fecha de Contrato</th>
+                            <th>Usuario</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,10 +63,12 @@
                             </td>
                             <td>
                             </td>
-                            <td><a href=""><button
-                                    type="button" class="btn btn-success" style="background-color:#002265; border-color:#002265; color:white">Editar</button> </a></td>
-                            <td><a href=""><button
-                                    type="button" class="btn btn-danger" >X</button> </a></td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

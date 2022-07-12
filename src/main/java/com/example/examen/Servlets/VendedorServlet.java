@@ -19,7 +19,7 @@ public class VendedorServlet extends HttpServlet {
         Empleado empleado = (Empleado) request.getSession().getAttribute("usuarioSesion");
                 ArrayList<Cartelera> carteleras = carteleraDao.listar(empleado.getDni());
 
-                request.setAttribute("listaCarteleras", carteleras);
+                request.setAttribute("cartelera", carteleras);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("CarteleraVendedor.jsp");
                 requestDispatcher.forward(request,response);
 
