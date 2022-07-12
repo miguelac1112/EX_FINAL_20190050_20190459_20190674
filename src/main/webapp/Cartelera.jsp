@@ -1,4 +1,9 @@
+<%@ page import="com.example.examen.Beans.Cartelera" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%ArrayList<Cartelera> carteleras = (ArrayList<Cartelera>) request.getAttribute("cartelera");%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,7 +45,7 @@
                 </br>
                 <div class="d-flex my-3">
                     <h2 class="section-heading text-uppercase">Lista de Funciones</h2>
-                    <a href="" class="btn btn-primary btn-xl ms-auto">Crear Funciones</a>
+                    <a href="<%=request.getContextPath()%>/CrearFuncionServlet" class="btn btn-primary btn-xl ms-auto">Crear Funciones</a>
                 </div>
                 </br>
                 <table class="table">
@@ -49,20 +54,27 @@
                             <th>Cadena</th>
                             <th>Cine</th>
                             <th>Película</th>
+                            <th>Horario</th>
                         </tr>
                     </thead>
+                    <%int i = 1;%>
+                    <%for(Cartelera cartelera : carteleras){%>
                     <tbody>
                         <tr>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                            <td><a href=""><button
+                            <th scope="row"><%=i%></th>
+                            <td class="text-sm-center"><%=cartelera.getCine().getNombre()%></td>
+                            <td class="text-sm-center" ><%=cartelera.getPelicula().getNombre()%>
+                                <%=cartelera.getTresD() == 1 ? "/3D" : ""%>
+                                <%=cartelera.getDoblada() == 1 ? "/Doblada" : ""%>
+                                <%=cartelera.getSubtitulada() == 1 ? "/Subtitulada" : ""%></td>
+                            <td class="text-sm-center"><%=cartelera.getHorario()%></td>
+                            <td><a href="<%=request.getContextPath()%>/GestorServlet?a=editar&id=<%=cartelera.getIdCartelera()%>"><button
                                     type="button" class="btn btn-success" style="background-color:#002265; border-color:#002265; color:white">Editar</button> </a></td>
-                            <td><a href=""><button
+                            <td><a href="<%=request.getContextPath()%>/GestorServlet?a=borrar&id=<%=cartelera.getIdCartelera()%>"><button
                                     type="button" class="btn btn-danger" >X</button> </a></td>
+                            <%
+                                    i=i+1;
+                                }%>
                         </tr>
                     </tbody>
                 </table>
@@ -77,4 +89,3 @@
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
-</html>

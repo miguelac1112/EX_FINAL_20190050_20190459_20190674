@@ -81,7 +81,7 @@
                         </br>
                         <div class="row align-items-stretch mb-5">
                             <div class="col-md-2">
-                                <a href="" class="btn btn-secondary btn-xl">Regresar</a>
+                                <a href="<%=request.getContextPath()%>/GestorServlet" class="btn btn-secondary btn-xl">Regresar</a>
                             </div>
                             <div class="col-md-2">
                             </div>
