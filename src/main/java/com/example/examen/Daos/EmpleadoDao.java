@@ -62,4 +62,22 @@ public class EmpleadoDao extends com.example.demo1.Daos.BaseDao {
         }
         return contras;
     }
+    public String obtenerRol(String dni){
+        String rol = null;
+        String sql = "SELECT r.nombre FROM rol r\n" +
+                "INNER JOIN rolempleado rol ON r.idrol = rol.idrol \n" +
+                "INNER JOIN empleado emp ON emp.idempleado =rol.idempleado WHERE dni = ?";
+        try(Connection conn = this.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1,dni);
+            try(ResultSet rs = pstmt.executeQuery()){
+                if(rs.next()){
+                    rol = rs.getString(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rol;
+    }
 }
