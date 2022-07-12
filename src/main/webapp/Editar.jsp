@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean type="java.util.ArrayList<com.example.examen.Beans.Pelicula>" scope="request" id="listaPeliculas"/>
+<%@ page import="com.example.examen.Beans.Pelicula" %>
+<%@ page import="java.util.Objects" %>
+<jsp:useBean id="idHorario" scope="request" type="java.lang.String" />
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,19 +45,21 @@
                 </br>
                 <h2 class="section-heading text-uppercase">Editar Función</h2>
 
-                <form class="row g-3 needs-validation" method="POST" action="<%=request.getContextPath()%>/CrearHorario?a=guardar">
+                <form class="row g-3 needs-validation" method="POST" action="<%=request.getContextPath()%>/GestorServlet?a=actualizar">
                     <!--Columna 1-->
                     <div class="col-md-6">
                         <div class="form-group">
                             <!-- Name input-->
-                            <label for="funcion" class="form-label">Nombre de la Película *</label>
                             <select class="form-select" name="funcion" id="funcion" required>
-                                <option value=""></option>
+                                <option disabled>Seleccione película</option>
+                                <% for(Pelicula listaPeliculas1 : listaPeliculas){ %>
+                                <option value="<%=listaPeliculas1.getIdPelicula()%>"><%=listaPeliculas1.getNombre()%></option>
+                                <% } %>
                             </select>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label for="sala" class="form-label">Cine *</label>
+                            <label for="sala" class="form-label">3D *</label>
                             <select class="form-select" name="sala" id="sala" required>
                                 <option value="0">Sí</option>
                                 <option value="1">No</option>
@@ -63,7 +69,7 @@
                         </br>
                         <div class="row align-items-stretch mb-5">
                             <div class="col-md-2">
-                                <a href="" class="btn btn-secondary btn-xl">Regresar</a>
+                                <a href="GestorServlet" class="btn btn-secondary btn-xl">Regresar</a>
                             </div>
                             <div class="col-md-2">
                             </div>

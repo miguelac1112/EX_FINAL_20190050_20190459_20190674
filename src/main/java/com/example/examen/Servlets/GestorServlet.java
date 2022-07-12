@@ -2,6 +2,7 @@ package com.example.examen.Servlets;
 
 import com.example.examen.Beans.Cartelera;
 import com.example.examen.Beans.Empleado;
+import com.example.examen.Beans.Pelicula;
 import com.example.examen.Daos.CarteleraDao;
 
 import javax.servlet.*;
@@ -30,7 +31,12 @@ public class GestorServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/GestorServlet");
             }
             case "editar" -> {
-
+                ArrayList<Pelicula> listaPeliculas = carteleraDao.listaPelicula();
+                String id = request.getParameter("id");
+                request.setAttribute("idHorario", id);
+                request.setAttribute("listaPeliculas",listaPeliculas);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("Editar.jsp");
+                requestDispatcher.forward(request, response);
             }
         }
     }
