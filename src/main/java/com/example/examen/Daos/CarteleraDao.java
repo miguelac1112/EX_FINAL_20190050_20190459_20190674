@@ -2,12 +2,10 @@ package com.example.examen.Daos;
 
 import com.example.examen.Beans.Cartelera;
 import com.example.examen.Beans.Cine;
+import com.example.examen.Beans.Empleado;
 import com.example.examen.Beans.Pelicula;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class CarteleraDao extends BaseDao {
@@ -47,6 +45,65 @@ public class CarteleraDao extends BaseDao {
         return carteleras;
 
     }
+
+    public ArrayList<Pelicula> listaPelicula(){
+        String sql="select nombre from pelicula";
+        ArrayList<Pelicula> peliculas= new ArrayList<>();
+        try(Connection conn= this.getConnection();
+            Statement stmt= conn.createStatement();
+            ResultSet rs= stmt.executeQuery(sql);){
+            while(rs.next()){
+                Pelicula pelicula = new Pelicula();
+                pelicula.setNombre(rs.getString(1));
+                peliculas.add(pelicula);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return peliculas;
+    }
+
+    public ArrayList<Cine> listaCines(){
+        String sql="select nombre from cine";
+        ArrayList<Cine> cines= new ArrayList<>();
+        try(Connection conn= this.getConnection();
+            Statement stmt= conn.createStatement();
+            ResultSet rs= stmt.executeQuery(sql);){
+            while(rs.next()){
+                Cine cine = new Cine();
+                cine.setNombre(rs.getString(1));
+                cines.add(cine);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cines;
+    }
+
+
+    public void anadirCartelera(int idpelicula, int idcine, int tresD,int doblada, int subtitulada, String horario) {
+
+        String sql = "insert into cartelera (idpelicula, idcine, 3d, doblada, subtitulada,horario) values (?,?,?,?,?,?);";
+
+        try (Connection connection = this.getConnection();
+             PreparedStatement pstmt= connection.prepareStatement(sql)){
+            pstmt.setInt(1,idpelicula);
+            pstmt.setInt(2,idcine);
+            pstmt.setInt(3,tresD);
+            pstmt.setInt(4,doblada);
+            pstmt.setInt(5,subtitulada);
+            pstmt.setString(6,horario);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+
+
 
 
 
