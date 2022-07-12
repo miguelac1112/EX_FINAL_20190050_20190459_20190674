@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "FilterIniciarSesion" ,servletNames = {"LogServlet"})
-public class FilterIniciarSesion implements Filter {
+@WebFilter(filterName = "FilterAdmin")
+public class FilterAdmin implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }
 
@@ -23,18 +23,13 @@ public class FilterIniciarSesion implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         EmpleadoDao empleadoDao = new EmpleadoDao();
         Empleado empleado = (Empleado) req.getSession().getAttribute("usuarioSesion");
-        String logout = req.getParameter("finish");
-        if (empleado==null || empleado.getIdEmpleado()==0 || logout.equals("yes")) {
+        if (empleado != null && empleado.getIdEmpleado()!=0 && empleadoDao.obtenerRol(empleado.getDni()).equals("admin")) {
+            resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            resp.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+            resp.setDateHeader("Expires", 0);
             chain.doFilter(request, response);
         } else {
-            if(empleadoDao.obtenerRol(empleado.getDni()).equals("vendedor")){
-                resp.sendRedirect(req.getContextPath()+"/VendedorServlet");
-            }else if(empleadoDao.obtenerRol(empleado.getDni()).equals("gestor")){
-                resp.sendRedirect(req.getContextPath()+"/GestorServlet");
-            }else{
-                resp.sendRedirect(req.getContextPath()+"/AdminServlet");
-            }
-
+            resp.sendRedirect(req.getContextPath());
         }
     }
 }
