@@ -94,6 +94,7 @@
                         <div class="form-group">
                             <label for="tiempo_inicio" class="form-label">Horario *</label>
                             <input type="text" class="form-control" placeholder="Ingrese los horarios" name="tiempo_inicio" id="tiempo_inicio" required>
+                            <input type="hidden" name="idHorario" id="idHorario" value="<%=idHorario%>" />
                         </div>
                         </br>
                     </div>

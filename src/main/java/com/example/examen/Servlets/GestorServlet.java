@@ -43,6 +43,20 @@ public class GestorServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 
+        String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
+        CarteleraDao carteleraDao = new CarteleraDao();
+        HttpSession session = request.getSession();
+
+        switch (action){
+            case "actualizar" ->{
+                String nombreid = request.getParameter("funcion");
+                String idCartelera = request.getParameter("idCartelera");
+                String tresd = request.getParameter("tresd");
+                String idioma = request.getParameter("idioma");
+                String fecha = request.getParameter("tiempo_inicio");
+            }
+        }
     }
 }
